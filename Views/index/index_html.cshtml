@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "This is the index";
+}
+<h2>Chinchillet, a RESTful framework in asp.net MVC</h2>
+<p>Current method is @ViewBag.Model.Name: @ViewBag.Model.Id</p>
+<form action="@Url.Action("index")" method="post">
+    <fieldset>
+        <legend>Just a post</legend>
+        <select name="id">
+            @for (var i = 0; i < 5; i++)
+            {
+                <option value="@i"@(i == ViewBag.Model.Id ? " selected" : null)>@i</option>
+            }
+        </select>
+        <input type="hidden" name="Name" value="POST" />
+        <button type="submit">Send</button>
+    </fieldset>
+</form>
+<form action="@Url.Action("index")" method="post">
+    <fieldset>
+        <legend>A put</legend>
+        <input type="text" name="Name" />
+        <input type="hidden" name="Id" value="123" />
+        <button type="submit">Send</button>
+    </fieldset>
+</form>
+<form action="@Url.Action("index")" method="post">
+    <fieldset>
+        <legend>A delete</legend>
+        <input type="hidden" name="Id" value="123" />
+        <input type="hidden" name="Name" value="DELETE" />
+        <button type="submit">Delete</button>
+    </fieldset>
+</form>
